@@ -33,8 +33,14 @@ public class ArrowController : MonoBehaviour
         float r1 = 0.5f;
         float r2 = 0.95f;
 
+        // 矢とプレイヤーの衝突判定
         if (d < r1 + r2)
         {
+            // 監督スクリプトのメソッド呼び出し
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
+
+            // 矢を削除
             Destroy(gameObject);
         }
     }
